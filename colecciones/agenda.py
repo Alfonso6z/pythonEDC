@@ -3,6 +3,9 @@ crear una agenda: que contenga nombre, telefono, colonia, mascota favoria, signo
 se tiene que consultar ingresar borrar modificar
 """
 #
+from secrets import randbits
+
+
 agenda = {  'Jannet': ['54-456-456', 'Ampliación', 'Conejos', 'Aries'],
             'Romina': ['45-465-489', 'Tepepan', 'Los perritos', 'Aries'],
             'Monse' : ['48-864-132', 'Santa Úrsula', 'Perritos', 'Tauro'],
@@ -45,6 +48,22 @@ while(continuar): # not salir = True
         print(f" {nombre} fue agregado correctamente")
     elif opt==2:
         print("buscar contacto")
+        # guarda lo que hay que buscar
+        buscar = input("Escribir nombre del contacto: ")
+        # busca en el la agenda, sino existe regresar "No existe"
+        resultado = agenda.get(buscar,"No existe el contacto ingresado: XD")
+        # Verifica que el resultado sea str
+        if isinstance(resultado,str):
+            print(resultado)
+        else:
+            nombre = buscar
+            telefono,colonia,mascota_fav,sZ = resultado
+            print(f"Nombre: {nombre}")
+            print(f"Telefono: {telefono}")
+            print(f"Colonia: {colonia}")
+            print(f"Mascota favorita: {mascota_fav}")
+            print(f"Signo zodiacal: {sZ}")
+            
     elif opt==3:
         print("editar contacto")
     elif opt==4:
