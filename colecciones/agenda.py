@@ -66,6 +66,33 @@ while(continuar): # not salir = True
             
     elif opt==3:
         print("editar contacto")
+        # guardar el nombre que voy a buscar
+        editar = input("¿Ingresa el usuario que quieres editar: ")
+        # si el nombre existe retorna una lista
+        resultado = agenda.get(editar,"No existe el contacto ingresado: XD")
+        # Verifica que el resultado sea str
+        if isinstance(resultado,str):
+            # el mensaje cuando no existe
+            print(resultado)
+        else:
+            # modificar
+            print("El contacto que quieres editar es: ", editar)
+            # desempaquetado
+            telefono,colonia,mascota_fav,sZ = resultado
+            print(f"1. Telefono: {telefono}")
+            print(f"2. Colonia: {colonia}")
+            print(f"3. Mascota favorita: {mascota_fav}")
+            print(f"4. Signo zodiacal: {sZ}")
+            # guardar la opción
+            opt = int(input("Ingresa una opción: "))
+            # guardar el nuevo valor
+            nuevo_valor = input("ingresa el nuevo valor: ")
+            # cambiar el valor en la lista resultado
+            resultado[opt-1] = nuevo_valor # opt-1 // 0,1,2,3
+            # acutaliza agenda, con llave
+            agenda[editar] = resultado
+            print(f"El contacto \"{editar}\" se actualizo correctamente")
+            print(f"nuevo valor \\ {nuevo_valor}")
     elif opt==4:
         print("borrar contacto")
     elif opt==5:
