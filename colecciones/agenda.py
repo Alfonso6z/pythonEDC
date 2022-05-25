@@ -2,10 +2,6 @@
 crear una agenda: que contenga nombre, telefono, colonia, mascota favoria, signo zodiacal
 se tiene que consultar ingresar borrar modificar
 """
-#
-from secrets import randbits
-
-
 agenda = {  'Jannet': ['54-456-456', 'Ampliación', 'Conejos', 'Aries'],
             'Romina': ['45-465-489', 'Tepepan', 'Los perritos', 'Aries'],
             'Monse' : ['48-864-132', 'Santa Úrsula', 'Perritos', 'Tauro'],
