@@ -4,8 +4,16 @@ se tiene que consultar ingresar borrar modificar
 """
 import os
 
+def imprime_contacto(nombre,atributos):
+    telefono,colonia,mascota_fav,sZ = atributos
+    print(f"Nombre: {nombre}")
+    print(f"Teléfono: {telefono}")
+    print(f"Colonia: {colonia}")
+    print(f"Mascota_fav: {mascota_fav}")
+    print(f"Signo Zodiacal: {sZ}")
+
 def menu(titulo,*opt,**mensajes):
-    # imprime titulo
+    # imprime titulo con bienvenida si primera_vez = Verdadero
     if mensajes["primera_vez"]:
         print("**********************************************")
         print(f"        BIENVENIDO a {titulo}       ")
@@ -16,43 +24,45 @@ def menu(titulo,*opt,**mensajes):
         print("**********************************************")
     # imprime opciones
     for i in range(len(opt)):
-        print(f"{i+1}) {opt[i]}")
+        print(f"{i+1}.- {opt[i]}")
     opc = int(input("Selecciona una opción:  "))
     if opc>=1 and opc <=len(opt):
         return opc
     else:
         print(mensajes["error"])
         return -1
-
-def mostrar_contactos(agenda):
+    
+def mostrar_contactos(agenda:dict):
+    # contar contactos
     cont = 1
+    # agenda.items() es iterable
+    # k = llave, v = valores[]
     for k,v in agenda.items():
-        telefono,colonia,mascota_fav,sZ = v
-        print(f"*********{cont}***********")
-        print(f"Nombre: {k}")
-        print(f"Teléfono: {telefono}")
-        print(f"Colonia: {colonia}")
-        print(f"Mascota_fav: {mascota_fav}")
-        print(f"Signo Zodiacal: {sZ}")
+        print(f"************** {cont} ***************")
+        imprime_contacto(k, v)
         print()
         cont+=1
 
-def agregar_contacto(agenda):
+def agregar_contacto(agenda:dict):
+    atr = []
     print("Agregar contacto")
     # capturar datos
     nombre = input("ingresa nombre: ")
     telefono = input("ingresa teléfono: ")
+    atr.append(telefono)
     colonia = input("ingresa colonia: ")
+    atr.append(colonia)
     mascota_fav = input("ingresa mascota favorita: ")
+    atr.append(mascota_fav)
     sZ = input("ingresa signo zodiacal: ")
+    atr.append(sZ)
     # guardar datos en una lista
-    atr = [telefono,colonia,mascota_fav,sZ]
+    # atr = [telefono,colonia,mascota_fav,sZ]
     # gurdar llave y valores en agenda
     agenda[nombre] = atr
     print(f" {nombre} fue agregado correctamente")
-    return agenda
 
-def buscar_contacto(agenda):
+def buscar_contacto(agenda:dict):
     print("buscar contacto")
     # guarda lo que hay que buscar
     buscar = input("Escribir nombre del contacto: ")
@@ -62,15 +72,9 @@ def buscar_contacto(agenda):
     if isinstance(resultado,str):
         print(resultado)
     else:
-        nombre = buscar
-        telefono,colonia,mascota_fav,sZ = resultado
-        print(f"Nombre: {nombre}")
-        print(f"Teléfono: {telefono}")
-        print(f"Colonia: {colonia}")
-        print(f"Mascota favorita: {mascota_fav}")
-        print(f"Signo zodiacal: {sZ}")
+        imprime_contacto(buscar, resultado)
 
-def editar_contacto(agenda):
+def editar_contacto(agenda:dict):
     # guardar el nombre que voy a buscar
     editar = input("Ingresa el usuario que quieres editar: ")
     # si el nombre existe retorna una lista
@@ -81,15 +85,15 @@ def editar_contacto(agenda):
         print(resultado)
     else:
         # modificar
-        print("El contacto que quieres editar es: ", editar)
+        titulo = "Contacto a editar : " + editar
         # desempaquetado
         telefono,colonia,mascota_fav,sZ = resultado
-        print(f"1. Teléfono: {telefono}")
-        print(f"2. Colonia: {colonia}")
-        print(f"3. Mascota favorita: {mascota_fav}")
-        print(f"4. Signo zodiacal: {sZ}")
-        # guardar la opción
-        opt = int(input("Ingresa una opción: "))
+        opt = menu(titulo,
+                    "Teléfono: " + telefono,
+                    "Colonia: " + colonia,
+                    "Mascota favorita: " + mascota_fav,
+                    "Signo Zodiacal: " + sZ,
+                    error='No existe el atributo',primera_vez=False)
         # guardar el nuevo valor
         nuevo_valor = input("Ingresa el nuevo valor: ")
         # cambiar el valor en la lista resultado
@@ -98,9 +102,8 @@ def editar_contacto(agenda):
         agenda[editar] = resultado
         print(f"El contacto \"{editar}\" se actualizó correctamente")
         print(f"nuevo valor \\ {nuevo_valor}")
-    return agenda
 
-def borrar_contacto(agenda):
+def borrar_contacto(agenda:dict):
     # guardar el nombre que voy a buscar
     borrar = input("Ingresa el usuario que quieres borrar: ")
     # si el nombre existe retorna una lista
@@ -113,24 +116,19 @@ def borrar_contacto(agenda):
         # modificar
         print("El contacto que se eliminó es: ")
         # desempaquetado
-        telefono,colonia,mascota_fav,sZ = resultado
-        print(f"Nombre: {borrar}")
-        print(f"Teléfono: {telefono}")
-        print(f"Colonia: {colonia}")
-        print(f"Mascota favorita: {mascota_fav}")
-        print(f"Signo zodiacal: {sZ}")
-    return agenda
+        imprime_contacto(borrar, resultado)
 
 def agenda(agenda):
     # bandera - bool
     continuar = True
     # primera vez
-    p = True
+    primera_vez = True
     #while del programa Agenda
     while(continuar): # not salir = True
-        os.system("cls")
         # menu while del menu
         while(True):
+            # Limpia pantalla
+            os.system("cls")
             opt = menu(
                 "Agenda Chida",
                 "Mostar Contactos",
@@ -140,8 +138,8 @@ def agenda(agenda):
                 "Borrar",
                 "Salir",
                 error="Elegiste una opción incorreta XD",
-                primera_vez=p)
-            p=False
+                primera_vez=primera_vez)
+            primera_vez=False
             # validar la opción
             if opt!=-1:
                 break
@@ -150,15 +148,16 @@ def agenda(agenda):
         if opt==1:
             mostrar_contactos(agenda)
         if opt==2:
-            agenda = agregar_contacto(agenda)
+            agregar_contacto(agenda)
         elif opt==3:
             buscar_contacto(agenda)
         elif opt==4:
-            agenda = editar_contacto(agenda)
+            editar_contacto(agenda)
         elif opt==5:
-            agenda = borrar_contacto(agenda)
+            borrar_contacto(agenda)
         elif opt==6:
             continuar = False
+        # no muestres Enter... si opt es salir
         if opt!=6:
             input("Enter para continuar ...")
     print("Adiós ...")
@@ -171,6 +170,7 @@ def main():
             'Ivan'  : ['55-465-789', 'Santa Úrsula', 'Gatos', 'Tauro'],
             'Hector': ['45-898-697', 'Tepepan', 'Lomitos', 'Tauro'],
             'Fer'   : ['85-213-789', 'Ampliacion', 'Gatos', 'Geminis']}
+
     agenda(contactos)
 
 if __name__ == "__main__":
