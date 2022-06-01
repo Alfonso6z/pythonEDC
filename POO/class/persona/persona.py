@@ -1,10 +1,13 @@
+from typing import Any
 class Persona():
+    
     # constructor o instanciador
     def __init__(self,nombre,edad,estatura):
+        print(f"Nacio {nombre}")
         self._nombre = nombre
         self._edad = edad
         self._estatura = estatura
-        self._conyuge = None
+        self._conyuge:Persona = None
     
     # comportamiento hablar
     def hablar(self,mensaje):

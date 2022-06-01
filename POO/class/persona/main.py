@@ -1,6 +1,6 @@
 from persona import Persona
-from figura import Figura
 def main():
+    # creando un objeto persona
     persona1 = Persona("Monse", 26, 1.58)
     persona2 = Persona("Juan", 35, 1.80)
     
@@ -12,6 +12,6 @@ def main():
     persona1.pedirMatrimonio(persona2)
     persona1.quienEsTuEsposo()
     persona2.quienEsTuEsposo()
-        
+    
 if __name__ == "__main__":
     main()
