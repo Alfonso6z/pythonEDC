@@ -39,7 +39,7 @@ El siguiente ejemplo de juego ilustra a un jugador tratando de adivinar la palab
 
 # Actividad 🔩
 Diseña un programa que nos permita realizar la simulación del juego del ahorcado en el lenguaje de programación Python.
-![EjemploAhorcado](https://raw.githubusercontent.com/Alfonso6z/pythonEDC/main/ahorcado.png)
+
 __Puntos a evaluar__
 * Uso de listas.
 * Programación orientada a objetos.
