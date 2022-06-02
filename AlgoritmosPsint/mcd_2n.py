@@ -5,7 +5,6 @@ de dos números por medio del algoritmo de Euclides.
 Entrada: 2 números
 Salidas: MCD 
 Restriccion: números positivos enteros 
-
 datos prueba: 1254, 14445
 
 """

@@ -147,7 +147,7 @@ def agenda(agenda):
         os.system("cls")
         if opt==1:
             mostrar_contactos(agenda)
-        if opt==2:
+        elif opt==2:
             agregar_contacto(agenda)
         elif opt==3:
             buscar_contacto(agenda)
