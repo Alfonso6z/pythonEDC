@@ -35,7 +35,7 @@ Usando una fila de guiones, se representa la palabra a adivinar, dando el númer
 ### Ejemplo del juego ⚙️
 
 El siguiente ejemplo de juego ilustra a un jugador tratando de adivinar la palabra Ahorcado utilizando una estrategia basada únicamente en la frecuencia de letra.
-
+![EjemploAhorcado](https://raw.githubusercontent.com/Alfonso6z/pythonEDC/main/ahorcado.png)
 
 # Actividad 🔩
 Diseña un programa que nos permita realizar la simulación del juego del ahorcado en el lenguaje de programación Python.
