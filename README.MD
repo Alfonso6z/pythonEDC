@@ -31,9 +31,6 @@ Usando una fila de guiones, se representa la palabra a adivinar, dando el númer
 * El jugador completa la palabra, o adivina la palabra completa correctamente
 * El otro jugador completa el diagrama(dibujo)
 
-```
-Da un ejemplo
-```
 
 ### Ejemplo del juego ⚙️
 
@@ -42,7 +39,7 @@ El siguiente ejemplo de juego ilustra a un jugador tratando de adivinar la palab
 
 # Actividad 🔩
 Diseña un programa que nos permita realizar la simulación del juego del ahorcado en el lenguaje de programación Python.
-
+![EjemploAhorcado](https://raw.githubusercontent.com/Alfonso6z/pythonEDC/main/ahorcado.png)
 __Puntos a evaluar__
 * Uso de listas.
 * Programación orientada a objetos.
