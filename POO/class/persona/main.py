@@ -5,7 +5,7 @@ def main():
     persona2 = Persona("Juan", 35, 1.80)
     
     persona1.hablar(f"Hola {persona2._nombre}!")
-    persona2.hablar(f"Hey,Que tal como te llamas?")
+    persona2.hablar(f"Hey,Qué tal como te llamas?")
     persona1.hablar(f"My name is {persona1._nombre}")
     persona2.hablar(f"Te quieres casar conmigo?")
     persona1.hablar(f"yes")

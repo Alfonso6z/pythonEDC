@@ -3,7 +3,7 @@ class Persona():
     
     # constructor o instanciador
     def __init__(self,nombre,edad,estatura):
-        print(f"Nacio {nombre}")
+        print(f"Nació {nombre}")
         self._nombre = nombre
         self._edad = edad
         self._estatura = estatura
@@ -15,10 +15,10 @@ class Persona():
     
     def pedirMatrimonio(self,conyuge):
         self._conyuge = conyuge
-        print(f"{self._nombre} se caso con {conyuge._nombre}")
+        print(f"{self._nombre} se casó con {conyuge._nombre}")
     
     def quienEsTuEsposo(self):
         if self._conyuge:
-            print(f"{self._nombre}: Mi conyuge es {self._conyuge._nombre}")
+            print(f"{self._nombre}: Mi cónyuge es {self._conyuge._nombre}")
         else:
             print("Estoy solter@")
