@@ -18,7 +18,5 @@ def main():
     print(g2.gramos)
     
     g1.cuantaGalleta()
-
-    
 if __name__ == "__main__":
     main()
